@@ -1,16 +1,119 @@
-html,
-body {
-  padding: 0;
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-}
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
 
-a {
-  color: inherit;
-  text-decoration: none;
-}
+@layer components{
+  .btn {
+    @apply py-2 px-4 border text-sm font-medium flex
+  }
+  .page-container {
+    height: 100vh;
+    position: relative;
+    background-size: cover;
+    background-image: url("/food-collage.jpg");
+  }
 
-* {
-  box-sizing: border-box;
+  .btn-custom {
+    @apply w-full justify-center border-transparent rounded-md  text-white focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 shadow-sm bg-red-600 hover:bg-indigo-700
+  }
+  
+  .btn-group {
+    @apply relative items-center border  text-gray-700 focus:z-10 focus:outline-none focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500;
+  }
+  
+  .btn-signin-logo {
+    @apply w-full justify-center rounded-md shadow-sm text-gray-500
+  }
+
+  .btn-text {
+    @apply inline-flex border-gray-300 bg-white hover:bg-gray-50
+  }
+
+  .icon-container {
+    @apply absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none
+  }
+  
+  .input {
+    @apply focus:ring-indigo-500 border-gray-300
+  }
+
+  .input--checkbox {
+    @apply text-indigo-600 h-4 w-4 rounded
+  }
+
+  .input--text{
+    @apply appearance-none block w-full px-3 py-2 border  rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:border-indigo-500 sm:text-sm
+  }
+
+  .logo {
+    @apply w-5 h-5 mr-2 -ml-1 text-gray-400
+  }
+  
+  .nav-bell-container {
+    @apply flex-shrink-0 p-1 text-gray-400 hover:text-gray-500
+  }
+  
+  .nav-button-container {
+    @apply inline-flex items-center justify-center p-2 text-gray-400 hover:text-gray-500 hover:bg-gray-100
+  }
+
+  .nav-icon-container {
+    @apply bg-white rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500
+  }
+  
+  .nav-links {
+    @apply border-indigo-500 text-gray-900 inline-flex items-center px-1 pt-1 border-b-2 text-sm font-medium
+  }
+
+  .nav-user-icon-container {
+    @apply flex text-sm
+  }
+
+  .nav-user-menu-container {
+    @apply origin-top-right absolute right-5 top-10 mt-2 w-48 z-10 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5
+  }
+
+  .nav-user-menu-items {
+    @apply block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100
+  }
+
+  .recipe-card-list {
+    @apply space-y-12 sm:grid sm:grid-cols-2 sm:gap-x-6 sm:gap-y-12 sm:space-y-0 lg:grid-cols-3 lg:gap-x-8
+  }
+
+  .recipe-bold-number {
+    @apply text-3xl font-extrabold tracking-tight text-gray-900
+  }
+
+  .recipe-container {
+    @apply flex flex-col flex-1 mx-auto overflow-hidden bg-white max-w-7xl sm:px-6 lg:px-8
+  }
+
+  .recipe-image-container {
+    @apply relative mx-auto max-w-md px-4 sm:max-w-3xl sm:px-6 lg:px-0 lg:max-w-none lg:pt-20 lg:pb-5
+  }
+
+  .search-container {
+    @apply flex-1 flex items-center justify-center px-2 lg:ml-6
+  }
+
+  .search-input {
+    @apply block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md leading-5 bg-white placeholder-gray-500 focus:outline-none focus:placeholder-gray-400 focus:ring-1 focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm
+  }
+
+  .search-results-ind-container {
+    @apply divide-y divide-gray-200 bg-white border border-gray-100 w-full absolute 
+  }
+
+  .table-data {
+    @apply px-6 py-3 text-sm whitespace-nowrap max-w-md font-medium
+  }
+
+  .table-header {
+    @apply py-3 border-b border-gray-200 bg-gray-50 text-xs font-medium text-gray-500 uppercase tracking-wider
+  }
+
+  .tag {
+    @apply inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium
+  }
 }

@@ -5,11 +5,25 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "build:css": "postcss --use autoprefixer -o styles/tailwind.css css/*.css",
+    "build:watch": "postcss styles/tailwind.css -o styles/main.css --watch",
+    "prod:build": "NODE_ENV=production yarn run build:css && yarn run build"
   },
   "dependencies": {
+    "@svgr/webpack": "^5.5.0",
+    "formik": "^2.2.6",
     "next": "10.2.0",
+    "postcss-cli": "^8.3.1",
     "react": "17.0.2",
     "react-dom": "17.0.2"
+  },
+  "devDependencies": {
+    "@types/node": "^15.0.1",
+    "@types/react": "^17.0.4",
+    "autoprefixer": "^10.2.5",
+    "postcss": "^8.2.13",
+    "tailwindcss": "^2.1.2",
+    "typescript": "^4.2.4"
   }
 }
