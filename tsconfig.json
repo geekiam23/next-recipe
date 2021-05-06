@@ -20,6 +20,11 @@
     "resolveJsonModule": true,
     "isolatedModules": true
   },
+  "paths": {
+    "@lib/*": [
+      "src/lib/utils/*"
+    ],
+  },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
