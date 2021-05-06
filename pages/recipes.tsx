@@ -5,18 +5,16 @@ import ButtonGroup from "../components/ButtonGroup";
 import Error from "../components/Error";
 import Loading from "../components/Loading";
 import Table from "../components/Table";
+import { useQuery } from "@apollo/client";
+import { GET_ALL_RECIPES } from "lib/utils/queries";
 
 const Recipes = (): ReactElement => {
   const [showTable, setShowTable] = useState<boolean>(false);
-
-  // useEffect(() => {
-  //   fetchRecipes();
-  // }, [currentUser]);
-
+  const { data, error, loading }= useQuery(GET_ALL_RECIPES)
   const handleShowTable = () => setShowTable(!showTable);
 
-  // if (loading) return <Loading />;
-  // if (error) return <Error />;
+  if (loading) return <Loading />;
+  if (error) return <Error />;
   // if (!recipes) return null;
 
   return (
@@ -29,9 +27,9 @@ const Recipes = (): ReactElement => {
         </div>
         <ButtonGroup showTable={showTable} handleShowTable={handleShowTable} />
         <main className="relative z-0 flex-1 overflow-y-auto focus:outline-none">
-          {/* {recipes.length > 0 && showTable && <Table recipes={recipes} />} */}
+          {data?.recipes.length > 0 && showTable && <Table recipes={data?.recipes} />}
 
-          {/* {recipes.length > 0 && !showTable && <RecipeCard recipes={recipes} />} */}
+          {data?.recipes.length > 0 && !showTable && <RecipeCard recipes={data?.recipes} />}
         </main>
       </div>
     </>

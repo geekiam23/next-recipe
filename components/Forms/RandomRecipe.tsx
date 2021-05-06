@@ -1,4 +1,6 @@
-import { Formik, useFormik, FormikErrors } from "formik";
+import { useLazyQuery } from "@apollo/client";
+import { useFormik, FormikErrors } from "formik";
+import { GET_RANDOM_RECIPES } from "lib/utils/queries";
 
 import {
   CUISINES,
@@ -6,17 +8,22 @@ import {
   INTOLERANCES,
   MEAL_TYPES,
 } from "../../lib/utils/constants";
-// meal types, diets, cuisines, intolerances, number
 
-const SignupForm = () => {
+const RandomRecipeForm = ({setRandomRecipes}) => {
+  const [getRecipes] = useLazyQuery(GET_RANDOM_RECIPES, {
+    onCompleted: (data) => setRandomRecipes(data.randomRecipes),
+  });
+  
   const formik = useFormik({
-    initialValues: {
-      //   text: initialText,
-      //   buttonText: initialButtonText,
-      //   includedInFutureServices: initialIncludedInFutureServices,
-    },
+    initialValues: {},
     onSubmit: (values) => {
-      console.log(values);
+      getRecipes({
+        variables: {
+          tags: Object.keys(values).join(', ').toLowerCase(),
+          number: '2'
+          // add in form
+        },
+      })
     },
   });
 
@@ -199,4 +206,4 @@ const SignupForm = () => {
   );
 };
 
-export default SignupForm;
+export default RandomRecipeForm;

@@ -2,13 +2,8 @@ import { ReactElement } from "react";
 import Link from 'next/link'
 import Star from "./icons/star";
 import CircleMinus from "./icons/circle-minus";
-// import { connect } from "react-redux";
-// import {
-//   addRecipeToFavorites,
-//   removeRecipeFromFavorites,
-// } from "../redux/user/user.actions";
 
-const RecipeCard = (): ReactElement => {
+const RecipeCard = ({ recipes }): ReactElement => {
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(
   //     recipe.id.toString()

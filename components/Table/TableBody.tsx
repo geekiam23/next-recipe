@@ -3,7 +3,7 @@ import Link from "next/link"
 import Star from "../icons/star";
 import CircleMinus from "../icons/circle-minus";
 
-const TableBody = (): ReactElement => {
+const TableBody = ({recipe}): ReactElement => {
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(
   //     recipe.id.toString()
