@@ -26,9 +26,9 @@ const SignInAndSingUp = () => {
   // };
 
   return (
-    <div className="min-h-screen bg-white flex">
-      <div className="flex-1 flex flex-col justify-center py-12 px-4 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
-        <div className="mx-auto w-full max-w-sm lg:w-96">
+    <div className="flex min-h-screen bg-white">
+      <div className="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
+        <div className="w-full max-w-sm mx-auto lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
               {isSignInPage
@@ -44,7 +44,7 @@ const SignInAndSingUp = () => {
                   Sign in with
                 </p>
 
-                <div className="mt-1 grid grid-cols-4 gap-3">
+                <div className="grid grid-cols-4 gap-3 mt-1">
                   <div>
                     <div
                       // onClick={signInWithGoogle}
@@ -94,7 +94,7 @@ const SignInAndSingUp = () => {
                 </div>
               </div>
 
-              <div className="mt-6 relative">
+              <div className="relative mt-6">
                 <div
                   className="absolute inset-0 flex items-center"
                   aria-hidden="true"
@@ -104,7 +104,7 @@ const SignInAndSingUp = () => {
                 <div className="relative flex justify-center text-sm">
                   <div
                     onClick={() => setIsSignInPage(!isSignInPage)}
-                    className="px-2 bg-white text-gray-500"
+                    className="px-2 text-gray-500 bg-white"
                   >
                     {isSignInPage
                       ? "Or create a new account"

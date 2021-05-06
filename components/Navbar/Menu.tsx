@@ -1,4 +1,4 @@
-// import { Link } from "react-router-dom";
+import Link from "next/link"
 
 // import { auth } from "../../config/firebase";
 // import { useHistory } from "react-router-dom";
@@ -29,12 +29,15 @@ const Menu = ({ openMenu }) => {
         aria-orientation="vertical"
         aria-labelledby="user-menu"
       >
+        <Link href="/landing">
+          <a className="nav-user-menu-items" role="menuitem">
+            Settings
+          </a>
+        </Link>
         {/* <Link to="/" className="nav-user-menu-items" role="menuitem">
           Recipes
         </Link> */}
-        <a href="#" className="nav-user-menu-items" role="menuitem">
-          Settings
-        </a>
+        
         <div
           // onClick={handleSignOut}
           className="nav-user-menu-items"

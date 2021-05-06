@@ -1,4 +1,4 @@
-import { ReactElement, useEffect, useState } from "react";
+import { ReactElement, useState } from "react";
 
 import RecipeCard from "../components/RecipeCard";
 import ButtonGroup from "../components/ButtonGroup";
