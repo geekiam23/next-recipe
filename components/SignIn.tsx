@@ -1,53 +1,18 @@
-import { useState } from "react";
 import { useAuth } from '../lib/utils/auth.js'
-
 import CustomButton from "./CustomButton";
 
-const Signin = ({ handleChange, user, setUser }) => {
-  // const [username, setUsername] = useState('')
-  // const [password, setPassword] = useState('')
-  
-  const { signIn, signOut } = useAuth()
+const Signin = ({ handleChange, formInfo }) => {
+  const { authErrors, signIn } = useAuth()
 
   const onSubmit = (e) => {
     e.preventDefault()
-    signIn({ username: user.email, password: user.password })
-    .then(res => {
-      console.log(res);
-      
-      // document.cookie = cookie.serialize(
-      //   'authorization',
-      //   `Bearer ${res.data.signIn.token}`,
-      //   {
-      //     maxAge: 60 * 60 * 24,
-      //     path: '/',
-      //     sameSite: 'lax',
-      //     secure: process.env.NODE_ENV === 'production',
-      //   }
-      // );
-      // window.location.assign('/');
-    })
+    signIn({ email: formInfo.email, password: formInfo.password })
   }
-  // const [error, setError] = useState(null);
-
-  // const handleSubmit = async (event) => {
-  //   event.preventDefault();
-  //   const { email, password } = user;
-
-  //   // try {
-  //   //   await auth.signInWithEmailAndPassword(email, password);
-
-  //   //   history.push("/");
-  //   //   setError(null);
-  //   // } catch (error) {
-  //   //   setError(error);
-  //   // }
-  // };
 
   return (
     <div>
       <form onSubmit={onSubmit} className="space-y-6">
-        {/* {error && <div>Sorry, something went wrong. Please try again.</div>} */}
+        {authErrors && <div>Sorry, something went wrong. Please try again.</div>}
         <div>
           <label
             htmlFor="email"

@@ -11,28 +11,27 @@ import Signin from "components/SignIn";
 import SignUp from "components/SignUp";
 
 const SignInAndSingUp = () => {
-  const [user, setUser] = useState({
-    displayName: "",
+  const [formInfo, setFormInfo] = useState({
     email: "",
     password: null,
     confirmPassword: null,
   });
 
-  const [isSignInPage, setIsSignInPage] = useState(true);
 
   const handleChange = (event) => {
     const { value, name } = event.target;
 
-    setUser({ ...user, [name]: value });
+    setFormInfo({ ...formInfo, [name]: value });
   };
-
+  const { isSignedIn } = useAuth()
+  
   return (
     <div className="flex min-h-screen bg-white">
       <div className="flex flex-col justify-center flex-1 px-4 py-12 sm:px-6 lg:flex-none lg:px-20 xl:px-24">
         <div className="w-full max-w-sm mx-auto lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              {isSignInPage
+              {isSignedIn
                 ? "Sign in to your account"
                 : "Sign up for new account"}
             </h2>
@@ -104,10 +103,10 @@ const SignInAndSingUp = () => {
                 </div>
                 <div className="relative flex justify-center text-sm">
                   <div
-                    onClick={() => setIsSignInPage(!isSignInPage)}
+                    // onClick={() => setIsSignInPage(!isSignInPage)}
                     className="px-2 text-gray-500 bg-white"
                   >
-                    {isSignInPage
+                    {isSignedIn
                       ? "Or create a new account"
                       : "Or sign in to an existing page"}
                   </div>
@@ -116,17 +115,15 @@ const SignInAndSingUp = () => {
             </div>
 
             <div className="mt-6">
-              {isSignInPage ? (
+              {isSignedIn ? (
                 <Signin
                   handleChange={handleChange}
-                  user={user}
-                  setUser={setUser}
+                  formInfo={formInfo}
                 />
               ) : (
                 <SignUp
                   handleChange={handleChange}
-                  user={user}
-                  setUser={setUser}
+                  formInfo={formInfo}
                 />
               )}
             </div>

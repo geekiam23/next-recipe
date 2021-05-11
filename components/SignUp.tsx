@@ -1,19 +1,18 @@
 
 import CustomButton from "components/CustomButton";
-import { useState } from "react";
+import { useAuth } from "lib/utils/auth";
 
 // TODO: connect forgot password
 // TODO: set up remember me through persisting
 // TODO: break forgot password and remember me into a separate component
 
-const SignUp = ({ handleChange, user, setUser }) => {
-  // const history = useHistory();
-  const [error, setError] = useState(null);
-
+const SignUp = ({ handleChange, formInfo }) => {
+  const { authErrors } = useAuth()
+  
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const { displayName, email, password, confirmPassword } = user;
+    const { email, password, confirmPassword } = formInfo;
 
     if (password !== confirmPassword) {
       alert("passwords don't match");
@@ -45,7 +44,7 @@ const SignUp = ({ handleChange, user, setUser }) => {
   return (
     <div>
       <form onSubmit={handleSubmit} className="space-y-6">
-        {error && <div>Sorry, something went wrong. Please try again.</div>}
+        {authErrors && <div>Sorry, something went wrong. Please try again.</div>}
         <div>
           <label
             htmlFor="displayName"
@@ -134,7 +133,7 @@ const SignUp = ({ handleChange, user, setUser }) => {
             />
             <label
               htmlFor="remember_me"
-              className="ml-2 block text-sm text-gray-900"
+              className="block ml-2 text-sm text-gray-900"
             >
               Remember me
             </label>
