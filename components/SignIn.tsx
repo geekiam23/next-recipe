@@ -1,28 +1,53 @@
 import { useState } from "react";
+import { useAuth } from '../lib/utils/auth.js'
 
 import CustomButton from "./CustomButton";
 
 const Signin = ({ handleChange, user, setUser }) => {
-  const [error, setError] = useState(null);
+  // const [username, setUsername] = useState('')
+  // const [password, setPassword] = useState('')
+  
+  const { signIn, signOut } = useAuth()
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const { email, password } = user;
+  const onSubmit = (e) => {
+    e.preventDefault()
+    signIn({ username: user.email, password: user.password })
+    .then(res => {
+      console.log(res);
+      
+      // document.cookie = cookie.serialize(
+      //   'authorization',
+      //   `Bearer ${res.data.signIn.token}`,
+      //   {
+      //     maxAge: 60 * 60 * 24,
+      //     path: '/',
+      //     sameSite: 'lax',
+      //     secure: process.env.NODE_ENV === 'production',
+      //   }
+      // );
+      // window.location.assign('/');
+    })
+  }
+  // const [error, setError] = useState(null);
 
-    // try {
-    //   await auth.signInWithEmailAndPassword(email, password);
+  // const handleSubmit = async (event) => {
+  //   event.preventDefault();
+  //   const { email, password } = user;
 
-    //   history.push("/");
-    //   setError(null);
-    // } catch (error) {
-    //   setError(error);
-    // }
-  };
+  //   // try {
+  //   //   await auth.signInWithEmailAndPassword(email, password);
+
+  //   //   history.push("/");
+  //   //   setError(null);
+  //   // } catch (error) {
+  //   //   setError(error);
+  //   // }
+  // };
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {error && <div>Sorry, something went wrong. Please try again.</div>}
+      <form onSubmit={onSubmit} className="space-y-6">
+        {/* {error && <div>Sorry, something went wrong. Please try again.</div>} */}
         <div>
           <label
             htmlFor="email"
@@ -72,7 +97,7 @@ const Signin = ({ handleChange, user, setUser }) => {
             />
             <label
               htmlFor="remember_me"
-              className="ml-2 block text-sm text-gray-900"
+              className="block ml-2 text-sm text-gray-900"
             >
               Remember me
             </label>
@@ -89,7 +114,7 @@ const Signin = ({ handleChange, user, setUser }) => {
         </div>
 
         <div>
-          <div className="mt-1 grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 mt-1">
             <CustomButton type="submit"> Sign in </CustomButton>
             <CustomButton 
             // onClick={signInWithGoogle}

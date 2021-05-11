@@ -1,5 +1,6 @@
 import { useState } from "react";
 import Image from 'next/image'
+import { useAuth } from '../lib/utils/auth.js'
 
 // import googleIcon from "assets/google.png";
 // import foodCollage from "../assets/food-collage.jpg";
@@ -19,11 +20,11 @@ const SignInAndSingUp = () => {
 
   const [isSignInPage, setIsSignInPage] = useState(true);
 
-  // const handleChange = (event) => {
-  //   const { value, name } = event.target;
+  const handleChange = (event) => {
+    const { value, name } = event.target;
 
-  //   setUser({ ...user, [name]: value });
-  // };
+    setUser({ ...user, [name]: value });
+  };
 
   return (
     <div className="flex min-h-screen bg-white">
@@ -117,13 +118,13 @@ const SignInAndSingUp = () => {
             <div className="mt-6">
               {isSignInPage ? (
                 <Signin
-                  // handleChange={handleChange}
+                  handleChange={handleChange}
                   user={user}
                   setUser={setUser}
                 />
               ) : (
                 <SignUp
-                  // handleChange={handleChange}
+                  handleChange={handleChange}
                   user={user}
                   setUser={setUser}
                 />

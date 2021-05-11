@@ -1,10 +1,13 @@
 import Link from "next/link"
+import { useAuth } from "../../lib/utils/auth.js"
 
 // import { auth } from "../../config/firebase";
 // import { useHistory } from "react-router-dom";
 import { useState } from "react";
 
 const Menu = ({ openMenu }) => {
+  const { signOut } = useAuth()
+
   // const history = useHistory();
   const [error, setError] = useState(null);
 
@@ -39,7 +42,7 @@ const Menu = ({ openMenu }) => {
         </Link> */}
         
         <div
-          // onClick={handleSignOut}
+          onClick={() => signOut()}
           className="nav-user-menu-items"
           role="menuitem"
         >
