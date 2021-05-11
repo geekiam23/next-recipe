@@ -8,7 +8,15 @@
     "start": "next start",
     "build:css": "postcss --use autoprefixer -o styles/tailwind.css css/*.css",
     "build:watch": "postcss styles/tailwind.css -o styles/main.css --watch",
-    "prod:build": "NODE_ENV=production yarn run build:css && yarn run build"
+    "prod:build": "NODE_ENV=production yarn run build:css && yarn run build",
+    "test": "jest --coverage --runInBand",
+    "test:failed": "yarn test --onlyFailures",
+    "types:check": "tsc --noEmit",
+    "types:generate": "yarn schema:fetch && graphql-codegen --config codegen.yml && yarn schema:generate-possible-types",
+    "schema:generate-possible-types": "node ./types/generatePossibleTypes.js",
+    "schema:fetch": "apollo client:download-schema schema.graphql",
+    "lint": "eslint --ext .ts,.tsx .",
+    "validate": "yarn test --silent && yarn types:check && yarn lint"
   },
   "dependencies": {
     "@apollo/client": "^3.3.16",

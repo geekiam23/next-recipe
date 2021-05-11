@@ -1,28 +1,18 @@
-import { useState } from "react";
-
+import { useAuth } from '../lib/utils/auth.js'
 import CustomButton from "./CustomButton";
 
-const Signin = ({ handleChange, user, setUser }) => {
-  const [error, setError] = useState(null);
+const Signin = ({ handleChange, formInfo }) => {
+  const { authErrors, signIn } = useAuth()
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-    const { email, password } = user;
-
-    // try {
-    //   await auth.signInWithEmailAndPassword(email, password);
-
-    //   history.push("/");
-    //   setError(null);
-    // } catch (error) {
-    //   setError(error);
-    // }
-  };
+  const onSubmit = (e) => {
+    e.preventDefault()
+    signIn({ email: formInfo.email, password: formInfo.password })
+  }
 
   return (
     <div>
-      <form onSubmit={handleSubmit} className="space-y-6">
-        {error && <div>Sorry, something went wrong. Please try again.</div>}
+      <form onSubmit={onSubmit} className="space-y-6">
+        {authErrors && <div>Sorry, something went wrong. Please try again.</div>}
         <div>
           <label
             htmlFor="email"
@@ -72,7 +62,7 @@ const Signin = ({ handleChange, user, setUser }) => {
             />
             <label
               htmlFor="remember_me"
-              className="ml-2 block text-sm text-gray-900"
+              className="block ml-2 text-sm text-gray-900"
             >
               Remember me
             </label>
@@ -89,7 +79,7 @@ const Signin = ({ handleChange, user, setUser }) => {
         </div>
 
         <div>
-          <div className="mt-1 grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-3 mt-1">
             <CustomButton type="submit"> Sign in </CustomButton>
             <CustomButton 
             // onClick={signInWithGoogle}

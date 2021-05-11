@@ -15,7 +15,7 @@ const Recipes = (): ReactElement => {
 
   if (loading) return <Loading />;
   if (error) return <Error />;
-  // if (!recipes) return null;
+  if (!data) return null;
 
   return (
     <>

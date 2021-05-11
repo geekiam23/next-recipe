@@ -1,28 +1,13 @@
 import Link from "next/link"
-
-// import { auth } from "../../config/firebase";
-// import { useHistory } from "react-router-dom";
-import { useState } from "react";
+import { useAuth } from "../../lib/utils/auth.js"
 
 const Menu = ({ openMenu }) => {
-  // const history = useHistory();
-  const [error, setError] = useState(null);
+  const { signOut } = useAuth()
 
   if (!openMenu) return null;
 
-  // const handleSignOut = () => {
-  //   auth
-  //     .signOut()
-  //     .then(() => {
-  //       history.push("/signin");
-  //       setError(null);
-  //     })
-  //     .catch((e) => setError(e));
-  // };
-
   return (
     <div>
-      {error && <div>Sorry, something went wrong. Please try again.</div>}
       <div
         className="nav-user-menu-container"
         role="menu"
@@ -39,7 +24,7 @@ const Menu = ({ openMenu }) => {
         </Link> */}
         
         <div
-          // onClick={handleSignOut}
+          onClick={() => signOut()}
           className="nav-user-menu-items"
           role="menuitem"
         >

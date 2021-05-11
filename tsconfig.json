@@ -22,7 +22,7 @@
   },
   "paths": {
     "@lib/*": [
-      "src/lib/utils/*"
+      "lib/utils/*"
     ],
   },
   "include": [

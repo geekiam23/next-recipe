@@ -1,31 +1,14 @@
 import { ReactElement, useEffect, useState } from "react";
-// import { connect } from "react-redux";
-// import { Link, useLocation } from "react-router-dom";
-
-// import { selectCurrentUser } from "../../redux/user/user.selectors";
-
 // import noUserIcon from "../../assets/no-user.png";
 import Bell from "../icons/bell";
 import SearchGlass from "../icons/search-glass";
 import Logo from "./Logo";
 import Menu from "./Menu";
-// import { createStructuredSelector } from "reselect";
 
 const Navbar = ({ currentUser }): ReactElement => {
   const [openMenu, setOpenMenu] = useState(false);
   const [searchQuery, setSearchQuery] = useState("");
   const [searchData, setSearchData] = useState([]);
-
-  // const location = useLocation();
-
-  // useEffect(() => {
-  //   if (!searchQuery) return;
-  //   fetch(
-  //     `https://api.spoonacular.com/recipes/complexSearch?query=${searchQuery}&apiKey=${process.env.REACT_APP_SPOONTACULAR_API_KEY}`
-  //   )
-  //     .then((res) => res.json())
-  //     .then((data) => setSearchData(data.results));
-  // }, [searchQuery]);
 
   useEffect(() => {
     setOpenMenu(false);
@@ -50,8 +33,8 @@ const Navbar = ({ currentUser }): ReactElement => {
   };
 
   return (
-    <nav className="bg-gray-100	border-b-2 shadow">
-      <div className="max-w-7xl mx-auto px-2 sm:px-4 lg:px-8">
+    <nav className="bg-gray-100 border-b-2 shadow">
+      <div className="px-2 mx-auto max-w-7xl sm:px-4 lg:px-8">
         <div className="flex justify-between h-16">
           <div className="flex px-2 lg:px-0">
             <Logo />
@@ -62,7 +45,7 @@ const Navbar = ({ currentUser }): ReactElement => {
             </div>
           </div>
           <div className="search-container">
-            <div className="relative w-full bg-white max-w-lg z-10">
+            <div className="relative z-10 w-full max-w-lg bg-white">
               <label htmlFor="search" className="sr-only">
                 Search
               </label>
@@ -92,9 +75,9 @@ const Navbar = ({ currentUser }): ReactElement => {
                 {searchData &&
                   searchData.map((recipe) => (
                     // <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-                      <li className="p-4 flex">
+                      <li className="flex p-4">
                         <img
-                          className="h-10 w-10 rounded-full"
+                          className="w-10 h-10 rounded-full"
                           src={recipe.image}
                           alt="image of finished recipe"
                         />
@@ -117,7 +100,7 @@ const Navbar = ({ currentUser }): ReactElement => {
             >
               <span className="sr-only">Open main menu</span>
               <svg
-                className="block h-6 w-6"
+                className="block w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -132,7 +115,7 @@ const Navbar = ({ currentUser }): ReactElement => {
                 />
               </svg>
               <svg
-                className="hidden h-6 w-6"
+                className="hidden w-6 h-6"
                 xmlns="http://www.w3.org/2000/svg"
                 fill="none"
                 viewBox="0 0 24 24"
@@ -155,7 +138,7 @@ const Navbar = ({ currentUser }): ReactElement => {
               <Bell size="h-6 w-6" />
             </button>
 
-            <div className="ml-4 relative flex-shrink-0">
+            <div className="relative flex-shrink-0 ml-4">
               <div>
                 <button
                   className="nav-icon-container nav-user-icon-container"
@@ -165,7 +148,7 @@ const Navbar = ({ currentUser }): ReactElement => {
                 >
                   <span className="sr-only">Open user menu</span>
                   <img
-                    className="h-8 w-8 rounded-full"
+                    className="w-8 h-8 rounded-full"
                     // src={currentUser?.photoURL ?? noUserIcon}
                     // src={currentUser?.photoURL ?? null}
                   />
@@ -180,10 +163,4 @@ const Navbar = ({ currentUser }): ReactElement => {
   );
 };
 
-// const mapStateToProps = () =>
-//   createStructuredSelector({
-//     currentUser: selectCurrentUser,
-//   });
-
-// export default connect(mapStateToProps)(Navbar);
 export default Navbar;
