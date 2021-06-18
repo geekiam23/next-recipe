@@ -10,7 +10,7 @@ import { GET_ALL_RECIPES } from "lib/utils/queries";
 
 const Recipes = (): ReactElement => {
   const [showTable, setShowTable] = useState<boolean>(false);
-  const { data, error, loading }= useQuery(GET_ALL_RECIPES)
+  const { data, error, loading } = useQuery(GET_ALL_RECIPES)
   const handleShowTable = () => setShowTable(!showTable);
 
   if (loading) return <Loading />;
