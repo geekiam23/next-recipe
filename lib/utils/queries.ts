@@ -6,6 +6,7 @@ export const GET_ALL_RECIPES = gql`
       id
       title
       summary
+      imageUrl
       cuisines {
         name
       }
