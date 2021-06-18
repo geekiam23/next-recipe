@@ -2,27 +2,23 @@ import { ReactElement, useState } from "react";
 
 import RecipeCard from "../components/RecipeCard";
 import ButtonGroup from "../components/ButtonGroup";
-import Error from "../components/Error";
-import Loading from "../components/Loading";
 import Table from "../components/Table";
-import { useQuery } from "@apollo/client";
-import { GET_ALL_RECIPES } from "lib/utils/queries";
+import { useAuth } from "lib/utils/auth";
 
 const Recipes = (): ReactElement => {
   const [showTable, setShowTable] = useState<boolean>(false);
-  const { data, error, loading }= useQuery(GET_ALL_RECIPES)
+  const {userInfo} = useAuth()
   const handleShowTable = () => setShowTable(!showTable);
 
-  if (loading) return <Loading />;
-  if (error) return <Error />;
-  if (!data) return null;
+  const data = userInfo?.getUser
+  if (!userInfo?.getUser.recipes) return <div>No Recipes Found</div>;
 
   return (
     <>
       <div className="recipe-container">
         <div className="px-4 py-5 bg-white border-b border-gray-200 sm:px-6">
           <h3 className="text-lg font-medium leading-6 text-gray-900">
-            All Recipes
+            My Recipes
           </h3>
         </div>
         <ButtonGroup showTable={showTable} handleShowTable={handleShowTable} />
