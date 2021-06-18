@@ -1,6 +1,5 @@
 import { useState } from "react";
 import Image from 'next/image'
-import { useAuth } from '../lib/utils/auth.js'
 
 // import googleIcon from "assets/google.png";
 // import foodCollage from "../assets/food-collage.jpg";
@@ -10,20 +9,19 @@ import GithubIcon from "components/icons/github";
 import Signin from "components/SignIn";
 import SignUp from "components/SignUp";
 
-const SignInAndSingUp = () => {
+const Session = () => {
+  const [signInStatus, setSignInStatus] = useState(true)
   const [formInfo, setFormInfo] = useState({
     email: "",
     password: null,
     confirmPassword: null,
   });
 
-
   const handleChange = (event) => {
     const { value, name } = event.target;
 
     setFormInfo({ ...formInfo, [name]: value });
   };
-  const { isSignedIn } = useAuth()
   
   return (
     <div className="flex min-h-screen bg-white">
@@ -31,7 +29,7 @@ const SignInAndSingUp = () => {
         <div className="w-full max-w-sm mx-auto lg:w-96">
           <div>
             <h2 className="mt-6 text-3xl font-extrabold text-gray-900">
-              {isSignedIn
+              {signInStatus
                 ? "Sign in to your account"
                 : "Sign up for new account"}
             </h2>
@@ -103,10 +101,10 @@ const SignInAndSingUp = () => {
                 </div>
                 <div className="relative flex justify-center text-sm">
                   <div
-                    // onClick={() => setIsSignInPage(!isSignInPage)}
-                    className="px-2 text-gray-500 bg-white"
+                    onClick={() => setSignInStatus(!signInStatus)}
+                    className="px-2 text-gray-500 bg-white cursor-pointer"
                   >
-                    {isSignedIn
+                    {signInStatus
                       ? "Or create a new account"
                       : "Or sign in to an existing page"}
                   </div>
@@ -115,7 +113,7 @@ const SignInAndSingUp = () => {
             </div>
 
             <div className="mt-6">
-              {isSignedIn ? (
+              {signInStatus ? (
                 <Signin
                   handleChange={handleChange}
                   formInfo={formInfo}
@@ -134,4 +132,4 @@ const SignInAndSingUp = () => {
   );
 };
 
-export default SignInAndSingUp;
+export default Session;

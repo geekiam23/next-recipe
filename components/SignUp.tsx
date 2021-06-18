@@ -1,45 +1,23 @@
 
 import CustomButton from "components/CustomButton";
+import useRememberUserStatus from "lib/hooks/rememberUserStatus";
 import { useAuth } from "lib/utils/auth";
 
-// TODO: connect forgot password
-// TODO: set up remember me through persisting
-// TODO: break forgot password and remember me into a separate component
-
 const SignUp = ({ handleChange, formInfo }) => {
+  const [rememberUserStatus, toggleRememberUserStatus] = useRememberUserStatus()
   const { authErrors } = useAuth()
+  const { email, password, confirmPassword } = formInfo;
   
-  const handleSubmit = async (event) => {
+  const handleSubmit = (event) => {
     event.preventDefault();
-
-    const { email, password, confirmPassword } = formInfo;
 
     if (password !== confirmPassword) {
       alert("passwords don't match");
       return;
     }
-
-    // try {
-    //   const { user } = await auth.createUserWithEmailAndPassword(
-    //     email,
-    //     password
-    //   );
-
-    //   await createUserProfileDocument(user, { displayName });
-
-    //   setUser({
-    //     displayName: "",
-    //     email: "",
-    //     password: null,
-    //     confirmPassword: null,
-    //   });
-
-    //   history.push("/");
-    //   setError(null);
-    // } catch (error) {
-    //   setError(error);
-    // }
   };
+
+  const handleChecked = () => toggleRememberUserStatus(email)
 
   return (
     <div>
@@ -129,6 +107,8 @@ const SignUp = ({ handleChange, formInfo }) => {
               id="remember_me"
               name="remember_me"
               type="checkbox"
+              checked={!!rememberUserStatus}
+              onChange={handleChecked}
               className="input input--checkbox"
             />
             <label

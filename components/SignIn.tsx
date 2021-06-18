@@ -1,13 +1,17 @@
 import { useAuth } from '../lib/utils/auth.js'
+import useRememberUserStatus from '../lib/hooks/rememberUserStatus'
 import CustomButton from "./CustomButton";
 
 const Signin = ({ handleChange, formInfo }) => {
   const { authErrors, signIn } = useAuth()
-
+  const [rememberUserStatus, toggleRememberUserStatus] = useRememberUserStatus()
+  
   const onSubmit = (e) => {
     e.preventDefault()
     signIn({ email: formInfo.email, password: formInfo.password })
   }
+
+  const handleChecked = () => toggleRememberUserStatus(formInfo.email)
 
   return (
     <div>
@@ -58,6 +62,8 @@ const Signin = ({ handleChange, formInfo }) => {
               id="remember_me"
               name="remember_me"
               type="checkbox"
+              checked={!!rememberUserStatus}
+              onChange={handleChecked}
               className="input input--checkbox"
             />
             <label

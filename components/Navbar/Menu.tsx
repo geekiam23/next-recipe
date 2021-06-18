@@ -1,11 +1,15 @@
 import Link from "next/link"
 import { useAuth } from "../../lib/utils/auth.js"
 
-const Menu = ({ openMenu }) => {
-  const { signOut } = useAuth()
+const Menu = ({ openMenu, toggleMenu }) => {
+  const { signOut, isSignedIn } = useAuth()
+  
+  const handleSignOut = () => {
+    signOut()
+    toggleMenu()
+  }
 
   if (!openMenu) return null;
-
   return (
     <div>
       <div
@@ -19,17 +23,21 @@ const Menu = ({ openMenu }) => {
             Settings
           </a>
         </Link>
-        {/* <Link to="/" className="nav-user-menu-items" role="menuitem">
-          Recipes
-        </Link> */}
-        
-        <div
-          onClick={() => signOut()}
-          className="nav-user-menu-items"
-          role="menuitem"
-        >
-          Sign out
-        </div>
+        {isSignedIn ? 
+          <div
+            onClick={handleSignOut}
+            className="nav-user-menu-items"
+            role="menuitem"
+          >
+            Sign out
+          </div>
+        :
+          <Link href="/session">
+            <a className="nav-user-menu-items" role="menuitem">
+              Sign In
+            </a>
+          </Link>
+        }
       </div>
     </div>
   );
