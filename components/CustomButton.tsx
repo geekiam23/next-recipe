@@ -1,5 +1,5 @@
 const CustomButton = ({ children, ...otherProps }) => (
-  <button className="btn btn-custom" {...otherProps}>
+  <button className='btn btn-custom' {...otherProps}>
     {children}
   </button>
 );
