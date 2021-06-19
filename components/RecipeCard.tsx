@@ -16,7 +16,7 @@ const RecipeCard = ({ isRandom, recipes }): ReactElement => {
   //   }
   //   addRecipeToFavorites(recipe);
   // };
-  const pageUrl = isRandom ? '/random/[id]' : '/recipe/[id]'
+  const pageUrl = isRandom ? '/random/[id]' : '/recipe/[id]';
 
   return (
     <div className='px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-12'>

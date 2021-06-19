@@ -25,7 +25,7 @@ export const GET_ALL_RECIPES = gql`
 
 export const GET_RECIPE = gql`
   query getRecipe($id: String!) {
-    getRecipe(id: $id)  {
+    getRecipe(id: $id) {
       id
       title
       summary

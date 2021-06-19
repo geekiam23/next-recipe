@@ -7,13 +7,13 @@ import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 
 const Recipe = (): ReactElement => {
-  const router = useRouter()
+  const router = useRouter();
   const { data, error, loading } = useQuery(GET_RANDOM_RECIPE, {
     variables: {
-      id: router?.query?.id
-    }
+      id: router?.query?.id,
+    },
   });
-  const recipe = data?.getRandomRecipe
+  const recipe = data?.getRandomRecipe;
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -65,10 +65,7 @@ const Recipe = (): ReactElement => {
                 />
               </div>
             </div>
-
-            // TODO: Connect tags to api
             {/* <Tags recipe={recipe} /> */}
-
             <div className='relative z-10 grid flex-wrap grid-cols-2 px-20 lg:py-3 lg:px-4'>
               {recipe?.extendedIngredients?.map(ingredient => {
                 return (
@@ -92,9 +89,7 @@ const Recipe = (): ReactElement => {
                 );
               })}
             </div>
-
             <div className='border-t-4 border-black-100'>
-              // TODO: Connect instructions to api
               {/* {recipe?.analyzedInstructions[0]?.steps.map(step => (
                 <Instructions key={step.number} step={step} />
               ))} */}
