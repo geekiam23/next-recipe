@@ -19,7 +19,7 @@ const RandomRecipes = (): ReactElement => {
         <RandomRecipeForm setRandomRecipes={setRandomRecipes} />
         <main className='relative z-0 flex-1 overflow-y-auto focus:outline-none'>
           <span className='flex divide-y-4 divide-black divide-opacity-25' />
-          {!showTable && <RecipeCard recipes={randomRecipes} />}
+          {!showTable && <RecipeCard isRandom recipes={randomRecipes} />}
 
           {showTable && <Table recipes={randomRecipes} />}
         </main>

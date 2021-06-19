@@ -24,7 +24,7 @@ const Recipes = (): ReactElement => {
           <h3 className='text-lg font-medium leading-6 text-gray-900'>All Recipes</h3>
         </div>
         <ButtonGroup showTable={showTable} handleShowTable={handleShowTable} />
-        <main className='relative z-0 flex-1 overflow-y-auto focus:outline-none'>
+        <main className='relative z-0 flex-1 max-h-screen mt-5 overflow-y-auto focus:outline-none'>
           {data?.recipes.length > 0 && showTable && <Table recipes={data?.recipes} />}
 
           {data?.recipes.length > 0 && !showTable && <RecipeCard recipes={data?.recipes} />}

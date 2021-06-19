@@ -1,6 +1,6 @@
 import { ReactElement } from 'react';
 import { useQuery } from '@apollo/client';
-import { GET_RECIPE } from 'lib/utils/queries';
+import { GET_RANDOM_RECIPE } from 'lib/utils/queries';
 import { useRouter } from 'next/dist/client/router';
 
 import Loading from '../../components/Loading';
@@ -8,12 +8,12 @@ import Error from '../../components/Error';
 
 const Recipe = (): ReactElement => {
   const router = useRouter()
-  const { data, error, loading } = useQuery(GET_RECIPE, {
+  const { data, error, loading } = useQuery(GET_RANDOM_RECIPE, {
     variables: {
       id: router?.query?.id
     }
   });
-  const recipe = data?.getRecipe
+  const recipe = data?.getRandomRecipe
 
   if (loading) return <Loading />;
   if (error) return <Error />;
@@ -60,7 +60,7 @@ const Recipe = (): ReactElement => {
               <div className='relative pt-64 pb-10 overflow-hidden shadow-xl rounded-2xl'>
                 <img
                   className='absolute inset-0 object-cover w-full h-full'
-                  src={recipe?.imageUrl || '/food-placeholder.jpeg'}
+                  src={recipe?.image || '/food-placeholder.jpeg'}
                   alt='image of finished recipe'
                 />
               </div>
@@ -95,7 +95,6 @@ const Recipe = (): ReactElement => {
 
             <div className='border-t-4 border-black-100'>
               // TODO: Connect instructions to api
-
               {/* {recipe?.analyzedInstructions[0]?.steps.map(step => (
                 <Instructions key={step.number} step={step} />
               ))} */}
