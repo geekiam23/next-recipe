@@ -38,9 +38,26 @@
   "devDependencies": {
     "@types/node": "^15.0.1",
     "@types/react": "^17.0.4",
+    "@typescript-eslint/eslint-plugin": "^4.27.0",
+    "@typescript-eslint/parser": "^4.27.0",
     "autoprefixer": "^10.2.5",
+    "eslint": "^7.28.0",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "eslint-plugin-testing-library": "^4.6.0",
+    "husky": "^6.0.0",
     "postcss": "^8.2.13",
+    "prettier": "^2.3.1",
+    "pretty-quick": "^3.1.1",
     "tailwindcss": "^2.1.2",
     "typescript": "^4.2.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "pretty-quick --staged && npm run lint"
+    }
   }
 }
