@@ -2,7 +2,7 @@ import React from 'react';
 import Meta from './Meta';
 import Nav from './Navbar';
 
-const Page: React.FC<PageProps> = ({ children }) => {
+const Page = ({ children }) => {
   return (
     <>
       <Meta title='{pageTitle}' />

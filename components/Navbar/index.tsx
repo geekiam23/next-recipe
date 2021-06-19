@@ -72,6 +72,7 @@ const Navbar = (): ReactElement => {
                   setSearchData(null);
                 }}
               >
+                {/* TODO: Add next Link */}
                 {searchData &&
                   searchData.map(recipe => (
                     // <Link to={`/recipe/${recipe.id}`} key={recipe.id}>

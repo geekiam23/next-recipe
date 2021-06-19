@@ -1,10 +1,10 @@
 import { ReactElement } from 'react';
 import Link from 'next/link';
-import Image from 'next/image';
 import Star from './icons/star';
 import CircleMinus from './icons/circle-minus';
 
-const RecipeCard = ({ recipes }): ReactElement => {
+const RecipeCard = ({ isRandom, recipes }): ReactElement => {
+  // TODO: Connect favorites to api
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(
   //     recipe.id.toString()
@@ -16,6 +16,7 @@ const RecipeCard = ({ recipes }): ReactElement => {
   //   }
   //   addRecipeToFavorites(recipe);
   // };
+  const pageUrl = isRandom ? '/random/[id]' : '/recipe/[id]';
 
   return (
     <div className='px-4 py-12 mx-auto max-w-7xl sm:px-6 lg:px-8 lg:py-12'>
@@ -28,23 +29,18 @@ const RecipeCard = ({ recipes }): ReactElement => {
               <li key={recipe.id}>
                 <Link
                   href={{
-                    pathname: '/recipe/[id]',
+                    pathname: pageUrl,
                     query: { id: recipe.id },
                   }}
                 >
                   <a>
                     <div className='h-full space-y-4 border rounded-lg'>
-                      <div className='aspect-w-3 aspect-h-2'>
-                        {imageUrl && (
-                          <Image
-                            width='100%'
-                            height='100%'
-                            // layout='responsive'
-                            className='object-contain rounded-lg shadow-lg'
-                            src={imageUrl}
-                            alt='image of finished recipe'
-                          />
-                        )}
+                      <div className='bg-gray-50 aspect-w-3 aspect-h-2 '>
+                        <img
+                          className='object-fill mx-auto rounded-lg shadow-lg max-h-52'
+                          src={imageUrl || '/food-placeholder.jpeg'}
+                          alt='image of finished recipe'
+                        />
                       </div>
 
                       <div className='space-y-2'>
