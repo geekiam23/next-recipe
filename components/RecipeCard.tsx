@@ -4,7 +4,7 @@ import Star from './icons/star';
 import CircleMinus from './icons/circle-minus';
 
 const RecipeCard = ({ isRandom, recipes }): ReactElement => {
-const RecipeCard = ({ recipes }): ReactElement => {
+  // TODO: Connect favorites to api
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(
   //     recipe.id.toString()

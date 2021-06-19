@@ -4,6 +4,7 @@ import Star from '../icons/star';
 import CircleMinus from '../icons/circle-minus';
 
 const TableBody = ({ recipe }): ReactElement => {
+  // TODO: Connect favorites to api
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(
   //     recipe.id.toString()

@@ -74,6 +74,7 @@ const Navbar = (): ReactElement => {
               >
                 {searchData &&
                   searchData.map(recipe => (
+                    // TODO: Add next Link
                     // <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
                     <li key={recipe.id} className='flex p-4'>
                       <img
