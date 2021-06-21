@@ -1,6 +1,11 @@
 import { ReactElement } from 'react';
 
-const ButtonGroup = ({ showTable, handleShowTable }): ReactElement => {
+interface Props {
+  showTable: string;
+  handleShowTable: () => void;
+}
+
+const ButtonGroup = ({ showTable, handleShowTable }: Props): ReactElement => {
   const showTableBkgrd = showTable ? 'bg-white' : 'bg-gray-100';
   const showCardBkgrd = showTable ? 'bg-gray-100' : 'bg-white';
 

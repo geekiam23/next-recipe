@@ -4,10 +4,10 @@ import TableBody from './TableBody';
 const Table = ({ recipes }) => {
   return (
     <div className='mt-8 sm:block'>
-      <div className='align-middle inline-block min-w-full border border-gray-200 overflow-x-scroll'>
+      <div className='inline-block min-w-full overflow-x-scroll align-middle border border-gray-200'>
         <table className='min-w-full'>
           <TableHeader />
-          {recipes?.map((recipe: any) => (
+          {recipes?.map(recipe => (
             <tbody className='bg-white divide-y divide-gray-100' key={recipe.id}>
               <TableBody recipe={recipe} />
             </tbody>
