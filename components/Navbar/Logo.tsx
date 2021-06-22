@@ -1,6 +1,6 @@
 // import { Link } from "react-router-dom";
 
-const Logo = () => {
+const Logo: React.FC = () => {
   // TODO: Add next Link
   return (
     <div className='flex items-center flex-shrink-0'>

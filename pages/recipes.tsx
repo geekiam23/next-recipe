@@ -1,17 +1,17 @@
 import { ReactElement, useState } from 'react';
+import { useQuery } from '@apollo/client';
 
 import RecipeCard from '../components/RecipeCard';
 import ButtonGroup from '../components/ButtonGroup';
 import Error from '../components/Error';
 import Loading from '../components/Loading';
 import Table from '../components/Table';
-import { useQuery } from '@apollo/client';
 import { GET_ALL_RECIPES } from 'lib/utils/queries';
 
-const Recipes = (): ReactElement => {
+const Recipes = (): ReactElement | null => {
   const [showTable, setShowTable] = useState<boolean>(false);
   const { data, error, loading } = useQuery(GET_ALL_RECIPES);
-  const handleShowTable = () => setShowTable(!showTable);
+  const handleShowTable = (): void => setShowTable(!showTable);
 
   if (loading) return <Loading />;
   if (error) return <Error />;

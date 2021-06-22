@@ -5,6 +5,7 @@ import { useRouter } from 'next/dist/client/router';
 
 import Loading from '../../components/Loading';
 import Error from '../../components/Error';
+import { ExtendedIngredient, ProductMatch } from 'types';
 
 const Recipe = (): ReactElement => {
   const router = useRouter();
@@ -67,7 +68,7 @@ const Recipe = (): ReactElement => {
             </div>
             {/* <Tags recipe={recipe} /> */}
             <div className='relative z-10 grid flex-wrap grid-cols-2 px-20 lg:py-3 lg:px-4'>
-              {recipe?.extendedIngredients?.map(ingredient => {
+              {recipe?.extendedIngredients?.map((ingredient: ExtendedIngredient) => {
                 return (
                   <div key={ingredient.id} className='flex items-center mb-5 mr-5'>
                     <div>
@@ -160,7 +161,7 @@ const Recipe = (): ReactElement => {
                 <dt className='text-base font-medium text-gray-500'>Suggested Wines</dt>
                 <dd className='text-3xl tracking-tight text-gray-900 capitalize'>
                   {recipe?.winePairing?.productMatches?.length > 0 &&
-                    recipe?.winePairing?.productMatches?.map(product => {
+                    recipe?.winePairing?.productMatches?.map((product: ProductMatch) => {
                       return (
                         <div key={product?.id} className='py-5'>
                           <dl className='grid grid-cols-1 gap-x-4 gap-y-8 sm:grid-cols-2'>

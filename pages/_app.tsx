@@ -8,13 +8,22 @@ import { AuthProvider } from '../lib/utils/auth.js';
 import { useCookies } from 'react-cookie';
 import '../styles/globals.css';
 
-const MyApp = ({ Component, pageProps }) => {
+interface Props {
+  Component: typeof React.Component;
+  pageProps: {
+    backgroundColor: string;
+  };
+}
+
+const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
   const [cookies] = useCookies(['user']);
 
   const client = new ApolloClient({
     uri: `https://foodielarry-api.herokuapp.com/graphql`,
     cache: new InMemoryCache(),
-    request: operation => {
+    request: (operation: {
+      setContext: (arg0: { headers: { authorization: string } }) => void;
+    }) => {
       if (cookies?.user?.token) {
         operation.setContext({
           headers: {

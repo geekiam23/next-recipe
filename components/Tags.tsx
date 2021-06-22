@@ -1,13 +1,18 @@
-const Tags = ({ recipe }) => {
+import { Recipe } from 'types';
+
+interface Props {
+  recipe: Recipe;
+}
+const Tags: React.FC<Props> = ({ recipe }) => {
   return (
-    <div className='z-10 relative flex justify-around py-10 px-20 lg:py-3 lg:px-4'>
-      {recipe.dairyFree && <span className='tag bg-pink-100 text-gray-800'>Diary Free</span>}
-      {recipe.cheap && <span className='tag  bg-red-100 text-red-800'>Cheap</span>}
-      {recipe.vegan && <span className='tag  bg-yellow-100 text-yellow-800'>Vegan</span>}
-      {recipe.veryPopular && <span className='tag  bg-green-100 text-green-800'>Popular</span>}
-      {recipe.veryHealthy && <span className='tag bg-blue-100 text-blue-800'>Healthy</span>}
-      {recipe.sustainable && <span className='tag  bg-indigo-100 text-indigo-800'>Badge</span>}
-      {recipe.glutenFree && <span className='tag  bg-purple-100 text-indigo-800'>Gluten Free</span>}
+    <div className='relative z-10 flex justify-around px-20 py-10 lg:py-3 lg:px-4'>
+      {recipe.dairyFree && <span className='text-gray-800 bg-pink-100 tag'>Diary Free</span>}
+      {recipe.cheap && <span className='text-red-800 bg-red-100 tag'>Cheap</span>}
+      {recipe.vegan && <span className='text-yellow-800 bg-yellow-100 tag'>Vegan</span>}
+      {recipe.veryPopular && <span className='text-green-800 bg-green-100 tag'>Popular</span>}
+      {recipe.veryHealthy && <span className='text-blue-800 bg-blue-100 tag'>Healthy</span>}
+      {recipe.sustainable && <span className='text-indigo-800 bg-indigo-100 tag'>Badge</span>}
+      {recipe.glutenFree && <span className='text-indigo-800 bg-purple-100 tag'>Gluten Free</span>}
     </div>
   );
 };

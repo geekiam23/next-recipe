@@ -1,15 +1,13 @@
-import { ReactElement } from 'react';
-
-const TableHeader = (): ReactElement => {
+const TableHeader: React.FC = () => {
   return (
     <thead>
       <tr className='border-t border-gray-200'>
-        <th className='table-header pr-6 max-w-1 text-right '></th>
-        <th className='table-header px-6 max-w-3 text-left'>
+        <th className='pr-6 text-right table-header max-w-1 '></th>
+        <th className='px-6 text-left table-header max-w-3'>
           <span className='lg:pl-2'>Title</span>
         </th>
-        <th className='table-header px-6 max-w-5 text-left'>Category</th>
-        <th className='table-header hidden md:table-cell max-w-5 px-6 text-right'>Tags</th>
+        <th className='px-6 text-left table-header max-w-5'>Category</th>
+        <th className='hidden px-6 text-right table-header md:table-cell max-w-5'>Tags</th>
       </tr>
     </thead>
   );

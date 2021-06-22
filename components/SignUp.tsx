@@ -1,13 +1,16 @@
+import { FormEvent } from 'react';
+
 import CustomButton from 'components/CustomButton';
 import useRememberUserStatus from 'lib/hooks/rememberUserStatus';
 import { useAuth } from 'lib/utils/auth';
+import { SessionInfo } from 'types';
 
-const SignUp = ({ handleChange, formInfo }) => {
+const SignUp: React.FC<SessionInfo> = ({ handleChange, formInfo }) => {
   const [rememberUserStatus, toggleRememberUserStatus] = useRememberUserStatus();
   const { authErrors } = useAuth();
   const { email, password, confirmPassword } = formInfo;
 
-  const handleSubmit = event => {
+  const handleSubmit = (event: FormEvent<HTMLFormElement>): void => {
     event.preventDefault();
 
     if (password !== confirmPassword) {
@@ -16,7 +19,7 @@ const SignUp = ({ handleChange, formInfo }) => {
     }
   };
 
-  const handleChecked = () => toggleRememberUserStatus(email);
+  const handleChecked = (): void => toggleRememberUserStatus(email);
 
   return (
     <div>

@@ -1,7 +1,12 @@
 import TableHeader from './TableHeader';
 import TableBody from './TableBody';
+import { Recipe } from 'types';
 
-const Table = ({ recipes }) => {
+interface Props {
+  recipes: Recipe[];
+}
+
+const Table: React.FC<Props> = ({ recipes }) => {
   return (
     <div className='mt-8 sm:block'>
       <div className='inline-block min-w-full overflow-x-scroll align-middle border border-gray-200'>

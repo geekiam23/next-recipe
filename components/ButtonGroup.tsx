@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
 
 interface Props {
-  showTable: string;
+  showTable: boolean;
   handleShowTable: () => void;
 }
 

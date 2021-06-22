@@ -8,7 +8,7 @@ import { useAuth } from 'lib/utils/auth';
 const Recipes = (): ReactElement => {
   const [showTable, setShowTable] = useState<boolean>(false);
   const { userInfo } = useAuth();
-  const handleShowTable = () => setShowTable(!showTable);
+  const handleShowTable = (): void => setShowTable(!showTable);
 
   const data = userInfo?.getUser;
   if (!userInfo?.getUser.recipes) return <div>No Recipes Found</div>;

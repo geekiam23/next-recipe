@@ -1,10 +1,17 @@
-const ImageDescription = ({ item, url }) => {
+import { Ent } from 'types';
+
+interface Props {
+  item: Ent;
+  url: string;
+}
+
+const ImageDescription: React.FC<Props> = ({ item, url }) => {
   return (
-    <div key={item.id} className='mt-6 flex mr-5'>
+    <div key={item.id} className='flex mt-6 mr-5'>
       <div className='flex items-center'>
         <div>
           <img
-            className='inline-block h-9 w-9 rounded-full'
+            className='inline-block rounded-full h-9 w-9'
             src={url + item.image}
             alt='image of ingredient or tool'
           />

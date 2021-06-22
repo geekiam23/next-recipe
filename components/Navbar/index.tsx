@@ -1,14 +1,25 @@
 import { ReactElement, useEffect, useState } from 'react';
-// import noUserIcon from "../../assets/no-user.png";
+
+import { Recipe } from 'types';
 import Bell from '../icons/bell';
 import SearchGlass from '../icons/search-glass';
 import Logo from './Logo';
 import Menu from './Menu';
 
+interface SyntheticEvent {
+  target: EventTarget;
+  keyCode: number;
+  preventDefault(): void;
+}
+interface ChangeEvent {
+  target: EventTarget;
+  preventDefault(): void;
+}
+
 const Navbar = (): ReactElement => {
-  const [openMenu, setOpenMenu] = useState(false);
-  const [searchQuery, setSearchQuery] = useState('');
-  const [searchData, setSearchData] = useState([]);
+  const [openMenu, setOpenMenu] = useState<boolean>(false);
+  const [searchQuery, setSearchQuery] = useState<string>('');
+  const [searchData, setSearchData] = useState<Recipe[] | null>([]);
 
   useEffect(() => {
     setOpenMenu(false);
@@ -17,18 +28,18 @@ const Navbar = (): ReactElement => {
   }, []);
   // }, [location]);
 
-  const toggleMenu = () => {
+  const toggleMenu = (): void => {
     setOpenMenu(!openMenu);
   };
 
-  const handleSearch = e => {
-    e.preventDefault();
-    setSearchQuery(e.target.value);
+  const handleSearch = (event: ChangeEvent): void => {
+    event.preventDefault();
+    setSearchQuery(event.target.value);
   };
 
-  const handleKeypress = e => {
-    if (e.keyCode === 13) {
-      handleSearch(e);
+  const handleKeypress = (event: SyntheticEvent): void => {
+    if (event.keyCode === 13) {
+      handleSearch(event);
     }
   };
 

@@ -1,9 +1,10 @@
 interface Props {
-  children?: JSX.Element;
+  children?: JSX.Element | string;
+  type?: 'button' | 'submit' | 'reset' | undefined;
   otherProps?: string;
 }
 
-const CustomButton = ({ children, ...otherProps }: Props) => (
+const CustomButton: React.FC<Props> = ({ children, ...otherProps }) => (
   <button className='btn btn-custom' {...otherProps}>
     {children}
   </button>

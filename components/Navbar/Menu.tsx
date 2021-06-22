@@ -1,10 +1,15 @@
 import Link from 'next/link';
 import { useAuth } from '../../lib/utils/auth.js';
 
-const Menu = ({ openMenu, toggleMenu }) => {
+interface Props {
+  openMenu: boolean;
+  toggleMenu: () => void;
+}
+
+const Menu: React.FC<Props> = ({ openMenu, toggleMenu }) => {
   const { signOut, isSignedIn } = useAuth();
 
-  const handleSignOut = () => {
+  const handleSignOut = (): void => {
     signOut();
     toggleMenu();
   };

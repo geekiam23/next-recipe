@@ -1,11 +1,16 @@
 import { useLazyQuery } from '@apollo/client';
 import { useFormik } from 'formik';
-import { GET_RANDOM_RECIPES } from 'lib/utils/queries';
 import { useState } from 'react';
 
+import { Recipe } from '../../types';
 import { CUISINES, DIETS, INTOLERANCES, MEAL_TYPES } from '../../lib/utils/constants';
+import { GET_RANDOM_RECIPES } from 'lib/utils/queries';
 
-const RandomRecipeForm = ({ setRandomRecipes }) => {
+interface Props {
+  setRandomRecipes: (data: Recipe[]) => void;
+}
+
+const RandomRecipeForm: React.FC<Props> = ({ setRandomRecipes }) => {
   const [showOptions, setShowOptions] = useState(true);
   const [getRecipes] = useLazyQuery(GET_RANDOM_RECIPES, {
     onCompleted: data => setRandomRecipes(data.randomRecipes),
@@ -16,7 +21,7 @@ const RandomRecipeForm = ({ setRandomRecipes }) => {
     onSubmit: values => {
       getRecipes({
         variables: {
-          tags: Object.keys(values).join(', ').toLowerCase(),
+          tags: Object.values(values).join(', ').toLowerCase(),
           number: '2',
           // add in form
         },
@@ -46,9 +51,9 @@ const RandomRecipeForm = ({ setRandomRecipes }) => {
                   <div key={diet.key}>
                     <label className='inline-flex items-center'>
                       <input
-                        name={diet.title}
+                        name='diet'
                         onChange={formik.handleChange}
-                        value={formik.values[diet.title]}
+                        value={diet.title}
                         type='checkbox'
                         className='form-checkbox'
                       />
@@ -68,9 +73,9 @@ const RandomRecipeForm = ({ setRandomRecipes }) => {
                   <div key={mealType.key}>
                     <label className='inline-flex items-center'>
                       <input
-                        name={mealType.title}
+                        name='mealType'
                         onChange={formik.handleChange}
-                        value={formik.values[mealType.title]}
+                        value={mealType.title}
                         type='checkbox'
                         className='form-checkbox'
                       />
@@ -89,9 +94,9 @@ const RandomRecipeForm = ({ setRandomRecipes }) => {
                   <div key={cuisine.key}>
                     <label className='inline-flex items-center'>
                       <input
-                        name={cuisine.title}
+                        name='cuisine'
                         onChange={formik.handleChange}
-                        value={formik.values[cuisine.title]}
+                        value={cuisine.title}
                         type='checkbox'
                         className='form-checkbox'
                       />
@@ -110,9 +115,9 @@ const RandomRecipeForm = ({ setRandomRecipes }) => {
                   <div key={intolerance.key}>
                     <label className='inline-flex items-center'>
                       <input
-                        name={intolerance.title}
+                        name='intolerance'
                         onChange={formik.handleChange}
-                        value={formik.values[intolerance.title]}
+                        value={intolerance.title}
                         type='checkbox'
                         className='form-checkbox'
                       />

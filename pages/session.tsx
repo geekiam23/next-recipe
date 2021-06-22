@@ -1,15 +1,13 @@
-import { useState } from 'react';
+import { ReactElement, useState } from 'react';
 import Image from 'next/image';
 
-// import googleIcon from "assets/google.png";
-// import foodCollage from "../assets/food-collage.jpg";
 import FacebookIcon from 'components/icons/facebook';
 import TwitterIcon from 'components/icons/twitter';
 import GithubIcon from 'components/icons/github';
 import Signin from 'components/SignIn';
 import SignUp from 'components/SignUp';
 
-const Session = () => {
+const Session = (): ReactElement => {
   const [signInStatus, setSignInStatus] = useState(true);
   const [formInfo, setFormInfo] = useState({
     email: '',
@@ -17,7 +15,7 @@ const Session = () => {
     confirmPassword: null,
   });
 
-  const handleChange = event => {
+  const handleChange = (event: React.ChangeEvent<HTMLInputElement>): void => {
     const { value, name } = event.target;
 
     setFormInfo({ ...formInfo, [name]: value });

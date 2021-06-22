@@ -1,9 +1,14 @@
-import { ReactElement } from 'react';
 import Link from 'next/link';
 import Star from './icons/star';
 import CircleMinus from './icons/circle-minus';
+import { Recipe } from 'types';
 
-const RecipeCard = ({ isRandom, recipes }): ReactElement => {
+interface Props {
+  isRandom?: boolean;
+  recipes: Recipe[];
+}
+
+const RecipeCard: React.FC<Props> = ({ isRandom, recipes }) => {
   // TODO: Connect favorites to api
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(

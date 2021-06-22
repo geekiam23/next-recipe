@@ -1,13 +1,15 @@
 import { ReactElement, useState } from 'react';
+
 import ButtonGroup from 'components/ButtonGroup';
 import RandomRecipeForm from 'components/Forms/RandomRecipe';
 import RecipeCard from 'components/RecipeCard';
 import Table from 'components/Table';
+import { Recipe } from 'types';
 
 const RandomRecipes = (): ReactElement => {
   const [showTable, setShowTable] = useState<boolean>(false);
-  const [randomRecipes, setRandomRecipes] = useState([]);
-  const handleShowTable = () => setShowTable(!showTable);
+  const [randomRecipes, setRandomRecipes] = useState<Recipe[]>([]);
+  const handleShowTable = (): void => setShowTable(!showTable);
 
   return (
     <>

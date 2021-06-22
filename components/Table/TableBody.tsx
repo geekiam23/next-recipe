@@ -1,9 +1,14 @@
-import { ReactElement } from 'react';
 import Link from 'next/link';
+
 import Star from '../icons/star';
 import CircleMinus from '../icons/circle-minus';
+import { Recipe } from 'types';
 
-const TableBody = ({ recipe }): ReactElement => {
+interface Props {
+  recipe: Recipe;
+}
+
+const TableBody: React.FC<Props> = ({ recipe }) => {
   // TODO: Connect favorites to api
   // const handleFavs = (recipe) => {
   //   const isExistingFavorite = currentUser.favorites.includes(

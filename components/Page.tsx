@@ -2,7 +2,12 @@ import React from 'react';
 import Meta from './Meta';
 import Nav from './Navbar';
 
-const Page = ({ children }) => {
+interface Props {
+  children?: JSX.Element;
+  backgroundColor: string;
+}
+
+const Page: React.FC<Props> = ({ children }) => {
   return (
     <>
       <Meta title='{pageTitle}' />
