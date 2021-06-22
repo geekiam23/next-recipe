@@ -2,7 +2,7 @@ module.exports = {
   client: {
     service: {
       name: 'github',
-      url: 'http://localhost:3000/graphql',
+      url: `https://foodielarry-api.herokuapp.com/graphql`,
       // optional headers
       // headers: {
       //   authorization: 'Bearer lkjfalkfjadkfjeopknavadf'

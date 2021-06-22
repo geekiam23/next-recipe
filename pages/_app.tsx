@@ -12,7 +12,7 @@ const MyApp = ({ Component, pageProps }) => {
   const [cookies] = useCookies(['user']);
 
   const client = new ApolloClient({
-    uri: 'http://localhost:3000/graphql',
+    uri: `https://foodielarry-api.herokuapp.com/graphql`,
     cache: new InMemoryCache(),
     request: operation => {
       if (cookies?.user?.token) {
