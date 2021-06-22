@@ -1,7 +1,7 @@
 import React from 'react';
 import { CookiesProvider } from 'react-cookie';
 import { ApolloProvider, ApolloClient } from '@apollo/client';
-import { InMemoryCache } from 'apollo-cache-inmemory';
+import { InMemoryCache, IntrospectionFragmentMatcher } from 'apollo-cache-inmemory';
 
 import Page from '../components/Page';
 import { AuthProvider } from '../lib/utils/auth.js';
@@ -20,7 +20,16 @@ const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
 
   const client = new ApolloClient({
     uri: `https://foodielarry-api.herokuapp.com/graphql`,
-    cache: new InMemoryCache(),
+    // @ts-expect-error
+    cache: new InMemoryCache({
+      fragmentMatcher: new IntrospectionFragmentMatcher({
+        introspectionQueryResultData: {
+          __schema: {
+            types: [],
+          },
+        },
+      }),
+    }),
     request: (operation: {
       setContext: (arg0: { headers: { authorization: string } }) => void;
     }) => {

@@ -6,16 +6,6 @@ import SearchGlass from '../icons/search-glass';
 import Logo from './Logo';
 import Menu from './Menu';
 
-interface SyntheticEvent {
-  target: EventTarget;
-  keyCode: number;
-  preventDefault(): void;
-}
-interface ChangeEvent {
-  target: EventTarget;
-  preventDefault(): void;
-}
-
 const Navbar = (): ReactElement => {
   const [openMenu, setOpenMenu] = useState<boolean>(false);
   const [searchQuery, setSearchQuery] = useState<string>('');
@@ -32,12 +22,12 @@ const Navbar = (): ReactElement => {
     setOpenMenu(!openMenu);
   };
 
-  const handleSearch = (event: ChangeEvent): void => {
+  const handleSearch = (event: any): void => {
     event.preventDefault();
     setSearchQuery(event.target.value);
   };
 
-  const handleKeypress = (event: SyntheticEvent): void => {
+  const handleKeypress = (event: any): void => {
     if (event.keyCode === 13) {
       handleSearch(event);
     }

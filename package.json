@@ -2,10 +2,13 @@
   "name": "next-recipe",
   "version": "0.1.0",
   "private": true,
+  "engines": {
+    "node": "12.18.3"
+  },
   "scripts": {
     "dev": "next dev -p 5000",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p $PORT",
     "build:css": "postcss --use autoprefixer -o styles/tailwind.css css/*.css",
     "build:watch": "postcss styles/tailwind.css -o styles/main.css --watch",
     "prod:build": "NODE_ENV=production yarn run build:css && yarn run build",
