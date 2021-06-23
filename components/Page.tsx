@@ -10,7 +10,7 @@ interface Props {
 const Page: React.FC<Props> = ({ children }) => {
   return (
     <>
-      <Meta title='{pageTitle}' />
+      <Meta title='My Recipes' />
       <Nav />
       <div>{children}</div>
     </>

@@ -38,20 +38,14 @@ const Session = (): ReactElement => {
 
                 <div className='grid grid-cols-4 gap-3 mt-1'>
                   <div>
-                    <div
-                      // onClick={signInWithGoogle}
-                      className='btn btn-signin-logo'
-                    >
+                    <div className='btn btn-signin-logo'>
                       <span className='sr-only'>Sign in with Google</span>
                       <Image src='/google.png' alt='me' width='20' height='20' />
                     </div>
                   </div>
 
                   <div>
-                    <div
-                      // onClick={signInWithFacebook}
-                      className='btn btn-signin-logo'
-                    >
+                    <div className='btn btn-signin-logo'>
                       <span className='sr-only'>Sign in with Facebook</span>
                       <svg
                         className='w-5 h-5'
@@ -65,20 +59,14 @@ const Session = (): ReactElement => {
                   </div>
 
                   <div>
-                    <div
-                      // onClick={signInWithTwitter}
-                      className='btn btn-signin-logo'
-                    >
+                    <div className='btn btn-signin-logo'>
                       <span className='sr-only'>Sign in with Twitter</span>
                       <TwitterIcon size='w-5 h-5' />
                     </div>
                   </div>
 
                   <div>
-                    <div
-                      // onClick={signInWithGithub}
-                      className='btn btn-signin-logo'
-                    >
+                    <div className='btn btn-signin-logo'>
                       <span className='sr-only'>Sign in with GitHub</span>
                       <GithubIcon size='w-5 h-5' />
                     </div>

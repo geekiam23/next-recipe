@@ -24,19 +24,29 @@ const Menu: React.FC<Props> = ({ openMenu, toggleMenu }) => {
         aria-labelledby='user-menu'
       >
         <Link href='/landing'>
-          <a className='nav-user-menu-items' role='menuitem'>
-            Settings
-          </a>
+          <div className='cursor-pointer nav-user-menu-items' role='menuitem'>
+            Home
+          </div>
+        </Link>
+        <Link href='/random'>
+          <div className='cursor-pointer nav-user-menu-items' role='menuitem'>
+            Random Recipes
+          </div>
+        </Link>
+        <Link href='/recipes'>
+          <div className='cursor-pointer nav-user-menu-items' role='menuitem'>
+            My Recipes
+          </div>
         </Link>
         {isSignedIn ? (
-          <div onClick={handleSignOut} className='nav-user-menu-items' role='menuitem'>
+          <div onClick={handleSignOut} className='nav-user-menu-items ' role='menuitem'>
             Sign out
           </div>
         ) : (
           <Link href='/session'>
-            <a className='nav-user-menu-items' role='menuitem'>
+            <div className='cursor-pointer nav-user-menu-items' role='menuitem'>
               Sign In
-            </a>
+            </div>
           </Link>
         )}
       </div>

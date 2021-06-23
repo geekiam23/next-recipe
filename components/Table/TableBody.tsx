@@ -9,27 +9,10 @@ interface Props {
 }
 
 const TableBody: React.FC<Props> = ({ recipe }) => {
-  // TODO: Connect favorites to api
-  // const handleFavs = (recipe) => {
-  //   const isExistingFavorite = currentUser.favorites.includes(
-  //     recipe.id.toString()
-  //   );
-
-  //   if (isExistingFavorite) {
-  //     removeRecipeFromFavorites(recipe);
-  //     return;
-  //   }
-  //   addRecipeToFavorites(recipe);
-  // };
-
   return (
     <tr>
       <td className='max-w-1'>
-        <div
-          className='flex-shrink-0 px-4'
-          aria-hidden='true'
-          // onClick={() => handleFavs(recipe)}
-        >
+        <div className='flex-shrink-0 px-4' aria-hidden='true'>
           {recipe?.favorite ? (
             <Star size='w-5' fill='yellow' />
           ) : (

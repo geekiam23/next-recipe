@@ -7,7 +7,7 @@ interface Props {
 
 const ButtonGroup = ({ showTable, handleShowTable }: Props): ReactElement => {
   const showTableBkgrd = showTable ? 'bg-white' : 'bg-gray-100';
-  const showCardBkgrd = showTable ? 'bg-gray-100' : 'bg-white';
+  const showCardBkgrd = showTable ? 'bg-gray-300' : 'bg-white';
 
   return (
     <div className='flex justify-end pt-6 pr-6'>

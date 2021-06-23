@@ -78,11 +78,7 @@ const Signin: React.FC<SessionInfo> = ({ handleChange, formInfo }) => {
         <div>
           <div className='grid grid-cols-2 gap-3 mt-1'>
             <CustomButton type='submit'> Sign in </CustomButton>
-            <CustomButton
-            // onClick={signInWithGoogle}
-            >
-              Sign in with Google
-            </CustomButton>
+            <CustomButton>Sign in with Google</CustomButton>
           </div>
         </div>
       </form>
