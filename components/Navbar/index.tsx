@@ -1,4 +1,5 @@
 import { ReactElement, useEffect, useState } from 'react';
+import Link from 'next/link';
 
 import { Recipe } from 'types';
 import Bell from '../icons/bell';
@@ -16,7 +17,6 @@ const Navbar = (): ReactElement => {
     setSearchQuery('');
     setSearchData([]);
   }, []);
-  // }, [location]);
 
   const toggleMenu = (): void => {
     setOpenMenu(!openMenu);
@@ -73,21 +73,23 @@ const Navbar = (): ReactElement => {
                   setSearchData(null);
                 }}
               >
-                {/* TODO: Add next Link */}
                 {searchData &&
                   searchData.map(recipe => (
-                    // <Link to={`/recipe/${recipe.id}`} key={recipe.id}>
-                    <li key={recipe.id} className='flex p-4'>
-                      <img
-                        className='w-10 h-10 rounded-full'
-                        src={recipe.image}
-                        alt='image of finished recipe'
-                      />
-                      <div className='ml-3'>
-                        <p className='text-sm font-medium text-gray-900'>{recipe.title}</p>
-                      </div>
-                    </li>
-                    // </Link>
+                    <Link
+                      href={{ pathname: '/recipe/[id]', query: { id: recipe.id } }}
+                      key={recipe.id}
+                    >
+                      <li key={recipe.id} className='flex p-4'>
+                        <img
+                          className='w-10 h-10 rounded-full'
+                          src={recipe.image}
+                          alt='image of finished recipe'
+                        />
+                        <div className='ml-3'>
+                          <p className='text-sm font-medium text-gray-900'>{recipe.title}</p>
+                        </div>
+                      </li>
+                    </Link>
                   ))}
               </ul>
             </div>
