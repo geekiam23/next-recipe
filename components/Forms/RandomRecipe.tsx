@@ -23,7 +23,6 @@ const RandomRecipeForm: React.FC<Props> = ({ setRandomRecipes }) => {
         variables: {
           tags: Object.values(values).join(', ').toLowerCase(),
           number: '2',
-          // add in form
         },
       });
       setShowOptions(false);

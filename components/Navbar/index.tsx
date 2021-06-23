@@ -147,11 +147,7 @@ const Navbar = (): ReactElement => {
                   onClick={toggleMenu}
                 >
                   <span className='sr-only'>Open user menu</span>
-                  <img
-                    className='w-8 h-8 rounded-full'
-                    // src={currentUser?.photoURL ?? noUserIcon}
-                    // src={currentUser?.photoURL ?? null}
-                  />
+                  <img className='w-8 h-8 rounded-full' />
                 </button>
               </div>
               <Menu openMenu={openMenu} toggleMenu={toggleMenu} />

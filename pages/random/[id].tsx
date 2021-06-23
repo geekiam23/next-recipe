@@ -7,6 +7,7 @@ import Loading from '../../components/Loading';
 import Error from '../../components/Error';
 import { ExtendedIngredient, ProductMatch } from 'types';
 
+//TODO: Refactor into smaller components
 const Recipe = (): ReactElement => {
   const router = useRouter();
   const { data, error, loading } = useQuery(GET_RANDOM_RECIPE, {

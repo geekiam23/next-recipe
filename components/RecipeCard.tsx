@@ -9,18 +9,6 @@ interface Props {
 }
 
 const RecipeCard: React.FC<Props> = ({ isRandom, recipes }) => {
-  // TODO: Connect favorites to api
-  // const handleFavs = (recipe) => {
-  //   const isExistingFavorite = currentUser.favorites.includes(
-  //     recipe.id.toString()
-  //   );
-
-  //   if (isExistingFavorite) {
-  //     removeRecipeFromFavorites(recipe);
-  //     return;
-  //   }
-  //   addRecipeToFavorites(recipe);
-  // };
   const pageUrl = isRandom ? '/random/[id]' : '/recipe/[id]';
 
   return (
