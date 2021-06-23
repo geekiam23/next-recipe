@@ -1,11 +1,9 @@
 import { ReactElement, useState } from 'react';
 import { useQuery } from '@apollo/client';
 
-import RecipeCard from '../components/RecipeCard';
-import ButtonGroup from '../components/ButtonGroup';
 import Error from '../components/Error';
 import Loading from '../components/Loading';
-import Table from '../components/Table';
+import RecipesLayout from '../components/RecipesLayout';
 import { GET_ALL_RECIPES } from 'lib/utils/queries';
 
 const Recipes = (): ReactElement | null => {
@@ -19,17 +17,13 @@ const Recipes = (): ReactElement | null => {
 
   return (
     <>
-      <div className='recipe-container'>
-        <div className='px-4 py-5 bg-white border-b border-gray-200 sm:px-6'>
-          <h3 className='text-lg font-medium leading-6 text-gray-900'>All Recipes</h3>
-        </div>
-        <ButtonGroup showTable={showTable} handleShowTable={handleShowTable} />
-        <main className='relative z-0 flex-1 max-h-screen mt-5 overflow-y-auto focus:outline-none'>
-          {data?.recipes.length > 0 && showTable && <Table recipes={data?.recipes} />}
-
-          {data?.recipes.length > 0 && !showTable && <RecipeCard recipes={data?.recipes} />}
-        </main>
-      </div>
+      <RecipesLayout
+        recipes={data?.recipes}
+        handleShowTable={handleShowTable}
+        header='All Recipes'
+        showTable={showTable}
+        showButtonGroup
+      />
     </>
   );
 };
