@@ -83,9 +83,9 @@ export const GET_RANDOM_RECIPE = gql`
 `;
 
 export const GET_USER_QUERY = gql`
-  query getUser($id: String!) {
-    getUser(id: $id) {
-      id
+  query getUser($token: String!) {
+    getUser(token: $token) {
+      token
       email
       recipes {
         id
@@ -107,6 +107,7 @@ export const LOGIN_MUTATION = gql`
       }
       user {
         id
+        token
       }
     }
   }

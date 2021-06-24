@@ -9,7 +9,7 @@ const FavoriteRecipes = (): ReactElement => {
   const handleShowTable = (): void => setShowTable(!showTable);
 
   const data = userInfo?.getUser;
-  if (!userInfo?.getUser.recipes) return <div>No Recipes Found</div>;
+  if (!userInfo?.getUser?.recipes) return <div>No Recipes Found</div>;
 
   return (
     <>
