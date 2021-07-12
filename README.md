@@ -23,6 +23,7 @@ Password: 'password'
 - React 17.0.2
 - Tailwind
 - Graphql
+- Typescript
 
 #### Tools and Packages:
 - cookie: library to help keep track of cookies
