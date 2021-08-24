@@ -26,22 +26,25 @@
     "strict": true,
     "strictNullChecks": true,
     "target": "esnext",
-    "baseUrl": ".",
+    "baseUrl": "./",
     "paths": {
-      "@/generated/*": [
+      "@generated/*": [
         "__generated__/*"
       ],
-      "@/components/*": [
-        "src/components/*"
+      "@components/*": [
+        "components/*"
       ],
-      "@/lib/*": [
-        "src/lib/*"
+      "@lib/*": [
+        "lib/*"
       ],
-      "@/pages/*": [
-        "src/pages/*"
+      "@pages/*": [
+        "pages/*"
       ],
-      "@/utils/*": [
-        "src/utils/*"
+      "@types/*": [
+        "types/*"
+      ],
+      "@utils/*": [
+        "utils/*"
       ]
     }
   },
@@ -52,6 +55,7 @@
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx",
-    "lib/utils/auth.js"
+    "lib/utils/auth.js",
+    "lib/utils/index.js"
   ]
 }
