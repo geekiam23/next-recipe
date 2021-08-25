@@ -19,7 +19,7 @@ const MyApp: React.FC<Props> = ({ Component, pageProps }) => {
   const [cookies] = useCookies(['user']);
 
   const client = new ApolloClient({
-    uri: `https://foodielarry-api.herokuapp.com/graphql`,
+    uri: process.env.NEXT_PUBLIC_API_URL,
     // @ts-expect-error
     cache: new InMemoryCache({
       fragmentMatcher: new IntrospectionFragmentMatcher({

@@ -2,12 +2,7 @@ module.exports = {
   client: {
     service: {
       name: 'github',
-      url: `https://foodielarry-api.herokuapp.com/graphql`,
-      // optional headers
-      // headers: {
-      //   authorization: 'Bearer lkjfalkfjadkfjeopknavadf'
-      // },
-      // optional disable SSL validation check
+      url: process.env.NEXT_PUBLIC_API_URL,
       skipSSLValidation: true
     }
   }

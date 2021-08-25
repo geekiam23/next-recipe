@@ -1,5 +1,0 @@
-schema: "https://foodielarry-api.herokuapp.com/graphql"
-extensions:
-  endpoints:
-    default:
-      url: "https://foodielarry-api.herokuapp.com/graphql"
