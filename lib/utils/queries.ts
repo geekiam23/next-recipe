@@ -24,7 +24,7 @@ export const GET_ALL_RECIPES = gql`
 `;
 
 export const GET_RECIPE = gql`
-  query getRecipe($id: String!) {
+  query getRecipe($id: ID!) {
     getRecipe(id: $id) {
       id
       title
@@ -65,8 +65,8 @@ export const GET_RANDOM_RECIPES = gql`
 `;
 
 export const GET_RANDOM_RECIPE = gql`
-  query getRandomRecipes($id: String!) {
-    getRandomRecipe(id: $id) {
+  query getSpoonacularRecipe($spoonacularId: ID!) {
+    getSpoonacularRecipe(spoonacularId: $spoonacularId) {
       id
       title
       summary
