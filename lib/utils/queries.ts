@@ -24,7 +24,7 @@ export const GET_ALL_RECIPES = gql`
 `;
 
 export const GET_RECIPE = gql`
-  query getRecipe($id: String!) {
+  query getRecipe($id: ID!) {
     getRecipe(id: $id) {
       id
       title
@@ -65,8 +65,8 @@ export const GET_RANDOM_RECIPES = gql`
 `;
 
 export const GET_RANDOM_RECIPE = gql`
-  query getRandomRecipes($id: String!) {
-    getRandomRecipe(id: $id) {
+  query getSpoonacularRecipe($spoonacularId: ID!) {
+    getSpoonacularRecipe(spoonacularId: $spoonacularId) {
       id
       title
       summary
@@ -83,42 +83,15 @@ export const GET_RANDOM_RECIPE = gql`
 `;
 
 export const GET_USER_QUERY = gql`
-  query getUser($token: String!) {
-    getUser(token: $token) {
-      token
+  query getUser($id: ID!) {
+    getUser(id: $id) {
+      id
       email
       recipes {
         id
         title
         summary
         imageUrl
-      }
-    }
-  }
-`;
-
-export const LOGIN_MUTATION = gql`
-  mutation SignMeIn($email: String!, $password: String!) {
-    signInMutation(email: $email, password: $password) {
-      token
-      success
-      errors {
-        message
-      }
-      user {
-        id
-        token
-      }
-    }
-  }
-`;
-
-export const LOGOUT_MUTATION = gql`
-  mutation SignMeOut {
-    signOutMutation {
-      success
-      errors {
-        message
       }
     }
   }
